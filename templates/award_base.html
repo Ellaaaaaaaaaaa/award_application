@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html>
+<head>
+    {% block head %}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>{{ APP_CODE }}</title>
+        <link rel="icon" href="{{ STATIC_URL }}open/favicon.ico" type="image/x-icon">
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link href="{{ REMOTE_STATIC_URL }}v3/assets/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/bk.css" rel="stylesheet">
+        <link href="https://magicbox.bk.tencent.com/static_api/v3/components_pro/layout6/css/index.css"
+              rel="stylesheet">
+        <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bk-icon-2.0/iconfont.css" rel="stylesheet">
+        <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/components/dialog.css" rel="stylesheet">
+{#        <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/components/form.css" rel="stylesheet">#}
+        <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/daterangepicker-2.0.css"
+              rel="stylesheet">
+        <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/umeditor-1.2.2/themes/default/css/umeditor.css"
+              rel="stylesheet">
+        <style>
+            /*如果你需要给你的应用固定高度和宽度，请在这里修改*/
+            body {
+                min-width: 1202px;
+            }
+
+            .container {
+                width: auto;
+                min-width: 1200px;
+            }
+        </style>
+    {% endblock %}
+</head>
+
+<body>
+<!--顶部导航 Start-->
+
+<nav class="bk-horz-nav11">
+    <div class="bk-nav-logo fl">
+        <img src="https://magicbox.bk.tencent.com/static_api/v3/bk/images/logo1.png">{% trans '奖项申报系统' %}
+    </div>
+    <div class="bk-nav-user fr">
+        <span class="mr5">admin</span>
+        <img src="https://magicbox.bk.tencent.com/static_api/v3/components_pro/horizontal_nav1/images/avatar.png">
+    </div>
+    <ul class="bk-nav-links fr">
+        <li>
+            <a href="{{ SITE_URL }}">首页</a>
+        </li>
+        <li class="bk-has-submenu">
+            <a href="javascript:;">系统管理</a>
+            <ul class="bk-submenu">
+                <li>
+                    <a href="{{ SITE_URL }}organization/">组织管理</a>
+                </li>
+                <li>
+                    <a href="{{ SITE_URL }}award">奖项信息</a>
+                </li>
+            </ul>
+        </li>
+        <li class="bk-has-submenu">
+            <a href="javascript:;">个人中心</a>
+            <ul class="bk-submenu">
+                <li>
+                    <a href="javascript:;">我的申报</a>
+                </li>
+                <li>
+                    <a href="javascript:;">我的审核</a>
+                </li>
+            </ul>
+        </li>
+        <li class="bk-has-submenu">
+            <a href="javascript:void(0)">
+                <span>{% trans "语言" %}</span>
+            </a>
+            <ul class="bk-submenu">
+                <li onclick="change_language('zh-hans')">
+                    <a href="javascript:;">
+                        简体中文
+                    </a>
+                </li>
+                <li onclick="change_language('en')">
+                    <a href="javascript:;">
+                        English
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<!--顶部导航 End-->
+
+<!-- 固定宽度居中 start -->
+{% block content %}{% endblock %}
+
+<!-- 固定宽度表单居中 end -->
+<!-- 尾部声明 start -->
+<div class="foot" id="footer">
+    <footer class="bk-footer">
+        <div class="bk-footer-links">
+            <ul>
+                <li>
+                    <a href="###">QQ咨询</a>
+                </li>
+                <li>
+                    <a href="###">蓝鲸论坛</a>
+                </li>
+                <li>
+                    <a href="###">蓝鲸官网</a>
+                </li>
+                <li>
+                    <a href="###">蓝鲸智云工作台</a>
+                </li>
+            </ul>
+        </div>
+        <p class="bk-footer-copyright">
+            Copyright &copy; 2012-2020 Tencent BlueKing. All Rights Reserved. 蓝鲸智云 版权所有
+        </p>
+    </footer>
+</div>
+<!-- 尾部声明 start -->
+</body>
+{% block base_js %}
+
+    <script src="{{ REMOTE_STATIC_URL }}v3/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="{{ REMOTE_STATIC_URL }}v3/assets/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/bkDialog-2.0/js/bkDialog.js"></script>
+
+
+    <!-- 这个是全局配置，如果需要在js中使用app_code和site_url,则这个javascript片段一定要保留 -->
+    <script type="text/javascript">
+        var app_code = "{{ APP_CODE }}";			// 在蓝鲸系统里面注册的"应用编码"
+        var site_url = "{{ SITE_URL }}";			// app的url前缀,在ajax调用的时候，应该加上该前缀
+        var remote_static_url = "{{ REMOTE_STATIC_URL }}";   //远程资源链接，403页面需要，不要删除
+        var debug_mode = JSON.parse("{{ DEBUG }}");	// 是否调试模式
+    </script>
+    <!--统计js  勿删-->
+    <script src="{{ REMOTE_STATIC_URL }}analysis.js?v={{ STATIC_VERSION }}"></script>
+    <script src="{{ STATIC_URL }}account/login.js?v={{ STATIC_VERSION }}"></script>
+    <script src="{{ STATIC_URL }}js/csrftoken.js?v={{ STATIC_VERSION }}"></script>
+
+    <script>
+        var relative_path = "{{ APP_PATH }}";
+        console.log(relative_path);
+        if (relative_path == site_url)
+            $('#home').addClass('king-navbar-active');
+        else if (relative_path == site_url + "dev-guide/")
+            $('#guide').addClass('king-navbar-active');
+        else if (relative_path == site_url + "contact/")
+            $('#contact').addClass('king-navbar-active');
+
+        function change_language(lang) {
+            $.ajax({
+                url: site_url + 'i18n/setlang/',
+                method: 'post',
+                data: {
+                    'language': lang,
+                },
+                success: function (ret) {
+                    window.location.reload()
+                }
+            })
+        }
+    </script>
+
+{% endblock %}
+{% block extra_block %}
+    <!--
+		这里放置子页面中附加内容，一般为js，注意子模版中的js如果使用到以上js库，必须放置在这里
+	 -->
+{% endblock %}
+</html>

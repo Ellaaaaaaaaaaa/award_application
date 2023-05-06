@@ -1,0 +1,397 @@
+{% extends "award_base.html" %}
+{% load i18n %}
+{% block head %}
+    <title>{% trans "蓝鲸开发框架" %}</title>
+    {{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="page-content" style="min-width:80%;">
+        <ol class="breadcrumb detail-breadcrumb">
+            <li class="all pro-all"><span href="#index?catalogue=all&amp;tag=all">系统管理</span></li>
+            <li><span href="{{ SITE_URL }}award">奖项信息</span></li>
+        </ol>
+        <div class="bk-panel bk-demo">
+            <div class="bk-panel-header">
+                <div class="bk-form bk-inline-form">
+                    <div class="bk-form-item">
+                        <label class="bk-label">申报奖项：</label>
+                        <div class="bk-form-content">
+                            <input type="text" class="bk-form-input" placeholder="请输入关键字" style="width:150px;">
+                        </div>
+                    </div>
+
+                    <div class="bk-form-item">
+                        <label class="bk-label">所属组织：</label>
+                        <div class="bk-form-content">
+                            <select name="" id="" class="bk-form-select" style="width:150px;">
+                                <option value="">蓝鲸业务组1</option>
+                                <option value="">蓝鲸业务组2</option>
+                                <option value="">蓝鲸业务组3</option>
+                                <option value="">蓝鲸业务组4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="bk-form-item">
+                        <label class="bk-label">状态：</label>
+                        <div class="bk-form-content">
+                            <select name="" id="" class="bk-form-select" style="width:150px;">
+                                <option value="">不限</option>
+                                <option value="">开启</option>
+                                <option value="">结束</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="bk-form bk-inline-form">
+                    <div class="bk-form-item">
+                        <label class="bk-label">申报时间：</label>
+                        <div class="bk-form-content">
+                            <input type="text" class="bk-form-input daterangepicker_demo" id="daterangepicker_demo1"
+                                   placeholder="选择日期...">
+                        </div>
+                    </div>
+                    <div class="bk-form-item">
+                        <div class="bk-form-content">
+                            <button class="bk-button bk-primary" title="查询">查询</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bk-panel-action">
+                    <a href="#mymodal" class="bk-button bk-primary" data-toggle="modal" data-target="#myModal">新增</a>
+                    <a href="{{ SITE_URL }}batch_copy/" class="bk-button bk-primary">批量克隆</a>
+                </div>
+            </div>
+            <div class="bk-panel-body p0">
+                <table class="bk-table has-thead-bordered">
+                    <thead>
+                    <tr>
+                        <th>所属组织</th>
+                        <th>奖项级别</th>
+                        <th>申报奖项</th>
+                        <th>状态</th>
+                        <th>开始时间</th>
+                        <th>申报时间</th>
+                        <th>申报人数</th>
+                        <th>获奖人数</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>中心级</td>
+                        <td>季度之星</td>
+                        <td>开始</td>
+                        <td>2020-11-06 16：50：50</td>
+                        <td>2020-11-06 16：50：50</td>
+                        <td>10</td>
+                        <td>1</td>
+                        <td>
+                            <a class="bk-icon-button bk-success bk-button-mini" title="查看">
+                                <i class="bk-icon icon-check-1 bk-icon"></i>
+                                <i class="bk-text">查看</i>
+                            </a>
+                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
+                                <i class="bk-icon icon-file bk-icon"></i>
+                                <i class="bk-text">编辑</i>
+                            </a>
+                            <a class="bk-icon-button bk-warning bk-button-mini" title="克隆">
+                                <i class="bk-icon icon-edit bk-icon"></i>
+                                <i class="bk-text">克隆</i>
+                            </a>
+                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
+                                <i class="bk-icon icon-close bk-icon"></i>
+                                <i class="bk-text">删除</i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>中心级</td>
+                        <td>季度之星</td>
+                        <td>开始</td>
+                        <td>2020-11-06 16：50：50</td>
+                        <td>2020-11-06 16：50：50</td>
+                        <td>10</td>
+                        <td>1</td>
+                        <td>
+                            <a class="bk-icon-button bk-success bk-button-mini" title="查看">
+                                <i class="bk-icon icon-check-1 bk-icon"></i>
+                                <i class="bk-text">查看</i>
+                            </a>
+                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
+                                <i class="bk-icon icon-file bk-icon"></i>
+                                <i class="bk-text">编辑</i>
+                            </a>
+                            <a class="bk-icon-button bk-warning bk-button-mini" title="克隆">
+                                <i class="bk-icon icon-edit bk-icon"></i>
+                                <i class="bk-text">克隆</i>
+                            </a>
+                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
+                                <i class="bk-icon icon-close bk-icon"></i>
+                                <i class="bk-text">删除</i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>中心级</td>
+                        <td>季度之星</td>
+                        <td>开始</td>
+                        <td>2020-11-06 16：50：50</td>
+                        <td>2020-11-06 16：50：50</td>
+                        <td>10</td>
+                        <td>1</td>
+                        <td>
+                            <a class="bk-icon-button bk-success bk-button-mini" title="查看">
+                                <i class="bk-icon icon-check-1 bk-icon"></i>
+                                <i class="bk-text">查看</i>
+                            </a>
+                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
+                                <i class="bk-icon icon-file bk-icon"></i>
+                                <i class="bk-text">编辑</i>
+                            </a>
+                            <a class="bk-icon-button bk-warning bk-button-mini" title="克隆">
+                                <i class="bk-icon icon-edit bk-icon"></i>
+                                <i class="bk-text">克隆</i>
+                            </a>
+                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
+                                <i class="bk-icon icon-close bk-icon"></i>
+                                <i class="bk-text">删除</i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>中心级</td>
+                        <td>季度之星</td>
+                        <td>开始</td>
+                        <td>2020-11-06 16：50：50</td>
+                        <td>2020-11-06 16：50：50</td>
+                        <td>10</td>
+                        <td>1</td>
+                        <td>
+                            <a class="bk-icon-button bk-success bk-button-mini" title="查看">
+                                <i class="bk-icon icon-check-1 bk-icon"></i>
+                                <i class="bk-text">查看</i>
+                            </a>
+                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
+                                <i class="bk-icon icon-file bk-icon"></i>
+                                <i class="bk-text">编辑</i>
+                            </a>
+                            <a class="bk-icon-button bk-warning bk-button-mini" title="克隆">
+                                <i class="bk-icon icon-edit bk-icon"></i>
+                                <i class="bk-text">克隆</i>
+                            </a>
+                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
+                                <i class="bk-icon icon-close bk-icon"></i>
+                                <i class="bk-text">删除</i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>中心级</td>
+                        <td>季度之星</td>
+                        <td>开始</td>
+                        <td>2020-11-06 16：50：50</td>
+                        <td>2020-11-06 16：50：50</td>
+                        <td>10</td>
+                        <td>1</td>
+                        <td>
+                            <a class="bk-icon-button bk-success bk-button-mini" title="查看">
+                                <i class="bk-icon icon-check-1 bk-icon"></i>
+                                <i class="bk-text">查看</i>
+                            </a>
+                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
+                                <i class="bk-icon icon-file bk-icon"></i>
+                                <i class="bk-text">编辑</i>
+                            </a>
+                            <a class="bk-icon-button bk-warning bk-button-mini" title="克隆">
+                                <i class="bk-icon icon-edit bk-icon"></i>
+                                <i class="bk-text">克隆</i>
+                            </a>
+                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
+                                <i class="bk-icon icon-close bk-icon"></i>
+                                <i class="bk-text">删除</i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bk-panel-footer p10">
+                <div class="bk-page bk-compact-page fr">
+                    <ul>
+                        <li class="page-item">
+                            <a href="javascript:void(0);" class="page-button">
+                                <i class="bk-icon icon-angle-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a href="javascript:void(0);" class="page-button">1</a>
+                        </li>
+                        <li class="page-item cur-page">
+                            <a href="javascript:void(0);" class="page-button">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="javascript:void(0);" class="page-button">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="javascript:void(0);" class="page-button">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="javascript:void(0);" class="page-button">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="javascript:void(0);" class="page-button">6</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="javascript:void(0);" class="page-button">
+                                <i class="bk-icon icon-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 新增and编辑( Modal )  -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+         data-backdrop="static">
+        <div class="modal-dialog" style="width: 1000px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">奖项管理</h4>
+                </div>
+                <div class="bk-form" style="width:600px;padding: 10px" id="validate_form">
+                    <div class="bk-form-item">
+                        <label class="bk-label" style="width:150px;">奖项名称</label>
+                        <div class="bk-form-content" style="margin-left:150px;">
+                            <input type="text" class="bk-form-input" placeholder="请输入奖项名称">
+                        </div>
+                    </div>
+                    <div class="bk-form-item">
+                        <label class="bk-label" style="width:150px;">评奖条件</label>
+                        <div class="bk-form-content" style="margin-left:150px;">
+                            <div id="editor4_demo1">
+                                <div id="myEditor" style="width:600px;height:240px;">
+                                    <p>请输入评奖条件...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bk-form-item">
+                        <label class="bk-label" style="width:150px;">奖项级别</label>
+                        <div class="bk-form-content" style="margin-left:150px;">
+                            <select name="" id="" class="bk-form-select">
+                                <option value="">级别1</option>
+                                <option value="">级别2</option>
+                                <option value="">级别3</option>
+                                <option value="">级别4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="bk-form-item">
+                        <label class="bk-label" style="width:150px;">所属组织</label>
+                        <div class="bk-form-content" style="margin-left:150px;">
+                            <input type="text" class="bk-form-input" placeholder="请输入所属组织">
+                        </div>
+                    </div>
+                    <div class="bk-form-item">
+                        <label class="bk-label" style="width:150px;">开始日期</label>
+                        <div class="bk-form-content" style="margin-left:150px;">
+                            <input type="text" class="bk-form-input daterangepicker_demo" id="start_datetime"
+                                   placeholder="选择日期...">
+                        </div>
+                    </div>
+                    <div class="bk-form-item">
+                        <label class="bk-label" style="width:150px;">结束日期</label>
+                        <div class="bk-form-content" style="margin-left:150px;">
+                            <input type="text" class="bk-form-input daterangepicker_demo" id="end_datetime"
+                                   placeholder="选择日期...">
+                        </div>
+                    </div>
+                    <div class="bk-form-item">
+                        <label class="bk-label" style="width:150px;">状态</label>
+                        <div class="bk-form-content" style="margin-left:150px;">
+                            <label class="bk-form-radio">
+                                <input type="radio" name="radio1" checked="checked">
+                                <i class="bk-radio-text">生效</i>
+                            </label>
+                            <label class="bk-form-radio">
+                                <input type="radio" name="radio1">
+                                <i class="bk-radio-text">过期</i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="bk-button bk-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="bk-button bk-primary">提交</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/moment.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/daterangepicker.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/umeditor-1.2.2/umeditor.config.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/umeditor-1.2.2/umeditor.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/umeditor-1.2.2/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+        //editor4_demo1_js_start
+        var editor = UM.getEditor('myEditor');
+
+        // 获取内容
+        function getContent() {
+            alert("编辑器当前内容为：\r\n" + editor.getContent());
+        }
+
+        // 设置内容
+        function setContent() {
+            return editor.setContent('欢迎使用蓝鲸！');
+        }
+
+        // 追加内容
+        function appendContent() {
+            return editor.setContent('欢迎使用蓝鲸！', true);
+        }
+
+        // 获得焦点
+        function setFocus() {
+            return editor.focus();
+        }
+
+        //editor4_demo1_js_end
+
+        // 选择单个日期
+        $('#daterangepicker_demo1').daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+            autoApply: false, //选择日期后自动设置值
+            singleDatePicker: true //单选选择一个日期
+        });
+        $('#start_datetime').daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+            autoApply: false, //选择日期后自动设置值
+            singleDatePicker: true //单选选择一个日期
+        });
+        $('#end_datetime').daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+            autoApply: false, //选择日期后自动设置值
+            singleDatePicker: true //单选选择一个日期
+        });
+
+
+    </script>
+{% endblock %}

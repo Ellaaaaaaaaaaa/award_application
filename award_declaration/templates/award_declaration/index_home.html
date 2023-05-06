@@ -1,0 +1,90 @@
+{% extends "award_base.html" %}
+{% load i18n %}
+{% block head %}
+    <title>{% trans "蓝鲸开发框架" %}</title>
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="page-content" style="min-width:80%;">
+        <div class="bk-collapse-panel">
+            <div class="panel-header" role="tab">
+                <a role="button" data-toggle="collapse" href="#panel-content1" class="panel-icon panel-spread"></a>
+                <h3 data-toggle="collapse" href="#panel-content1" class="panel-title">当前可申报奖项</h3>
+            </div>
+            <div id="panel-content1" class="panel-body panel-collapse collapse in p0">
+                <div class="m15">
+                    <p>内容...</p>
+                    <p>内容...</p>
+                    <p>内容...</p>
+                    <p>内容...</p>
+                </div>
+            </div>
+        </div>
+        <div class="bk-collapse-panel">
+            <div class="panel-header" role="tab">
+                <a role="button" data-toggle="collapse" href="#panel-content2" class="panel-icon panel-spread"
+                   aria-expanded="true"></a>
+                <h3 role="button" data-toggle="collapse" href="#panel-content2" class="panel-title"
+                    aria-expanded="true">上次获奖人名单</h3>
+            </div>
+            <div id="panel-content2" class="panel-body panel-collapse p0 collapse in" aria-expanded="true" style="">
+                <table class="bk-table bk-table-header-bordered ">
+                    <thead>
+                    <tr>
+                        <th>所属单位</th>
+                        <th>申报奖项</th>
+                        <th>申请时间</th>
+                        <th>申报人/团队</th>
+                        <th>申报详情</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>业务优化奖</td>
+                        <td>2017-11-10</td>
+                        <td>极品飞车车online容器项目联合团队</td>
+                        <td><a class="bk-text-button bk-info" title="查看">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>业务优化奖</td>
+                        <td>2017-11-10</td>
+                        <td>极品飞车车online容器项目联合团队</td>
+                        <td><a class="bk-text-button bk-info" title="查看">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>业务优化奖</td>
+                        <td>2017-11-10</td>
+                        <td>极品飞车车online容器项目联合团队</td>
+                        <td><a class="bk-text-button bk-info" title="查看">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>业务优化奖</td>
+                        <td>2017-11-10</td>
+                        <td>极品飞车车online容器项目联合团队</td>
+                        <td><a class="bk-text-button bk-info" title="查看">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>业务优化奖</td>
+                        <td>2017-11-10</td>
+                        <td>极品飞车车online容器项目联合团队</td>
+                        <td><a class="bk-text-button bk-info" title="查看">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td>蓝鲸产品中心</td>
+                        <td>业务优化奖</td>
+                        <td>2017-11-10</td>
+                        <td>极品飞车车online容器项目联合团队</td>
+                        <td><a class="bk-text-button bk-info" title="查看">查看</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

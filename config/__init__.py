@@ -20,7 +20,7 @@ import os
 from blueapps.core.celery import celery_app
 
 __all__ = ["celery_app", "RUN_VER", "APP_CODE", "SECRET_KEY", "BK_URL", "BASE_DIR"]
-
+REMOTE_STATIC_URL = "https://magicbox.bk.tencent.com/static_api/"
 
 # app 基本信息
 
