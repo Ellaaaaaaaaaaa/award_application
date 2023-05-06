@@ -2,6 +2,8 @@
 {% load i18n %}
 {% block head %}
     <title>{% trans "蓝鲸开发框架" %}</title>
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-tagsinput-0.6.1/bootstrap-tagsinput.css"
+          rel="stylesheet">
     {{ block.super }}
 {% endblock %}
 
@@ -18,7 +20,7 @@
                 </div>
             </div>
             <div class="bk-panel-body p0">
-                <table class="bk-table has-thead-bordered">
+                <table id="organization" class="bk-table table-bordered">
                     <thead>
                     <tr>
                         <th>所属组织</th>
@@ -29,198 +31,270 @@
                         <th>操作</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>蓝鲸产品中心</td>
-                        <td>xxx</td>
-                        <td>yyy</td>
-                        <td>admin</td>
-                        <td>2020-11-06 09:20:00</td>
-                        <td>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-file bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蓝鲸产品中心</td>
-                        <td>xxx</td>
-                        <td>yyy</td>
-                        <td>admin</td>
-                        <td>2020-11-06 09:20:00</td>
-                        <td>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-file bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蓝鲸产品中心</td>
-                        <td>xxx</td>
-                        <td>yyy</td>
-                        <td>admin</td>
-                        <td>2020-11-06 09:20:00</td>
-                        <td>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-file bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蓝鲸产品中心</td>
-                        <td>xxx</td>
-                        <td>yyy</td>
-                        <td>admin</td>
-                        <td>2020-11-06 09:20:00</td>
-                        <td>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-file bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蓝鲸产品中心</td>
-                        <td>xxx</td>
-                        <td>yyy</td>
-                        <td>admin</td>
-                        <td>2020-11-06 09:20:00</td>
-                        <td>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-file bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蓝鲸产品中心</td>
-                        <td>xxx</td>
-                        <td>yyy</td>
-                        <td>admin</td>
-                        <td>2020-11-06 09:20:00</td>
-                        <td>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-file bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蓝鲸产品中心</td>
-                        <td>xxx</td>
-                        <td>yyy</td>
-                        <td>admin</td>
-                        <td>2020-11-06 09:20:00</td>
-                        <td>
-                            <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                                <i class="bk-icon icon-file bk-icon"></i>
-                                <i class="bk-text">编辑</i>
-                            </a>
-                            <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                                <i class="bk-icon icon-close bk-icon"></i>
-                                <i class="bk-text">删除</i>
-                            </a>
-                        </td>
-                    </tr>
-                    </tbody>
                 </table>
-            </div>
-            <div class="bk-panel-footer p10">
-                <div class="bk-page bk-compact-page fr">
-                    <ul>
-                        <li class="page-item">
-                            <a href="javascript:void(0);" class="page-button">
-                                <i class="bk-icon icon-angle-left"></i>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a href="javascript:void(0);" class="page-button">1</a>
-                        </li>
-                        <li class="page-item cur-page">
-                            <a href="javascript:void(0);" class="page-button">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="javascript:void(0);" class="page-button">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="javascript:void(0);" class="page-button">4</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="javascript:void(0);" class="page-button">5</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="javascript:void(0);" class="page-button">6</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="javascript:void(0);" class="page-button">
-                                <i class="bk-icon icon-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
     <!-- 模态框( Modal )  -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+         data-backdrop="static">
         <div class="modal-dialog" style="width: 680px;">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">组织管理</h4>
+                    <h4 class="modal-title" id="myModalLabel">添加组织信息</h4>
                 </div>
-                <div class="bk-form" style="width:600px;padding: 10px" id="validate_form">
-                    <div class="bk-form-item">
-                        <label class="bk-label" style="width:150px;">所属组织</label>
-                        <div class="bk-form-content" style="margin-left:150px;">
-                            <input type="text" class="bk-form-input" placeholder="请输入所属组织">
+                <form id="validate_form">
+                    <div class="bk-form" style="width:600px;padding: 10px" id="validate_form">
+                        <input type="hidden" id="org_id" class="bk-form-input">
+                        <div class="bk-form-item is-required">
+                            <label class="bk-label" style="width:150px;">所属组织</label>
+                            <div class="bk-form-content" style="margin-left:150px;">
+                                <input type="text" id="org_name" class="bk-form-input" name="org_name"
+                                       placeholder="请输入所属组织">
+                            </div>
+                        </div>
+                        <div class="bk-form-item is-required">
+                            <label class="bk-label" style="width:150px;">负责人员</label>
+                            <div class="bk-form-content" style="margin-left:150px;">
+                                <input class="bk-form-input" type="text" id="principal" name="principal"
+                                       data-role="tagsinput" style="display: none;" placeholder="输入负责人员后回车确认">
+                            </div>
+                        </div>
+
+                        <div class="bk-form-item is-required">
+                            <label class="bk-label" style="width:150px;">可申报人员</label>
+                            <div class="bk-form-content" style="margin-left:150px;width: 450px">
+                                <input class="bk-form-input" type="text" id="apply_person" name="apply_person"
+                                       data-role="tagsinput" style="display: none; width: 450px"
+                                       placeholder="输入可申报人员后回车确认">
+                            </div>
                         </div>
                     </div>
-                    <div class="bk-form-item">
-                        <label class="bk-label" style="width:150px;">负责人员</label>
-                        <div class="bk-form-content" style="margin-left:150px;">
-                            <input type="text" class="bk-form-input" placeholder="请输入负责人员">
-                        </div>
-                    </div>
-                    <div class="bk-form-item">
-                        <label class="bk-label" style="width:150px;">可申报人员</label>
-                        <div class="bk-form-content" style="margin-left:150px;">
-                            <textarea name="" id="" class="bk-form-textarea" placeholder="请输入可申报人员，人员信息间隔用分号(;)"></textarea>
-                        </div>
-                    </div>
-                </div>
+                </form>
+
                 <div class="modal-footer">
                     <button type="button" class="bk-button bk-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="bk-button bk-primary">提交</button>
+                    <button type="submit" id="saveOrg" onclick="saveOrg()" class="bk-button bk-primary">提交</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
+
+{% endblock %}
+
+{% block extra_block %}
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-tagsinput-0.6.1/bootstrap-tagsinput.min.js"></script>
+    <script>
+        //表格(DataTables)
+        var language = {
+            search: "{% trans '搜索：' %}",
+            lengthMenu: "{% trans '每页显示 _MENU_ 记录' %}",
+            zeroRecords: "{% trans '没找到相应的数据！' %}",
+            info: "{% trans '分页 _PAGE_ / _PAGES_ 共 _TOTAL_ 条' %}",
+            infoEmpty: "{% trans '暂无数据！' %}",
+            infoFiltered: "{% trans '(从 _MAX_ 条数据中搜索)' %}",
+            paginate: {
+                first: "{% trans '首页' %}",
+                last: "{% trans '尾页' %}",
+                previous: "{% trans '上一页' %}",
+                next: "{% trans '下一页' %}",
+            }
+        }
+        var orgTable = $('#organization').DataTable({
+            sProcessing: '<img alt="loadding" src="https://magicbox.bk.tencent.com/static_api/v3/components/loading1/images/loading_2_36x36.gif">',//这里很重要，如果你的加载中是文字，则直接写上文字即可，如果是gif的图片，使用img标签就可以加载
+            pagingType: "full_numbers",
+            paging: true, //隐藏分页
+            ordering: false, //关闭排序
+            info: true, //隐藏左下角分页信息
+            searching: false, //关闭搜索
+            pageLength: 10, //每页显示几条数据
+            lengthChange: false, //不允许用户改变表格每页显示的记录数
+            language: language, //汉化
+            serverSide: true,
+            lengthMenu: [5, 10, 25, 50, 75, 100],
+            ajax: {
+                url: '{{SITE_URL}}get_org_list/',
+                method: "get",
+                dataType: 'json',
+                dataSrc: function (json) {
+                    json.draw = json.data.info.draw;
+                    json.recordsTotal = json.data.info.recordsTotal;
+                    json.recordsFiltered = json.data.info.recordsFiltered;
+                    json.data = json.data.info.data
+
+                    return json.data;
+                },
+            },
+            columnDefs: [
+                {
+                    targets: 0,
+                    data: "org_name",
+                },
+                {
+                    targets: 1,
+                    data: "principal",
+                },
+                {
+                    targets: 2,
+                    data: "apply_person",
+                },
+                {
+                    targets: 3,
+                    data: "operator",
+                },
+                {
+                    targets: 4,
+                    data: "create_time", className: "text-center",
+                },
+                {
+                    targets: 5,
+                    data: "id",
+                    render: function (data, type, row, meta) {
+                        return '<a class="bk-icon-button bk-warning bk-button-mini" type="button" onclick="editOrgForm(' + data + ')" title="编辑">\n' +
+                            '<i class="bk-icon icon-file bk-icon"></i>\n' +
+                            '<i class="bk-text">编辑</i>\n' +
+                            '</a>\n' +
+                            '<a class="bk-icon-button bk-danger bk-button-mini" type="button" onclick="deleteOrgForm(' + data + ')" title="关闭">\n' +
+                            '<i class="bk-icon icon-close bk-icon"></i>\n' +
+                            '<i class="bk-text">删除</i>\n' +
+                            '</a>\n';
+                    }
+                },
+            ]
+        });
+        setInterval(function () {
+            orgTable.ajax.reload(null, false); // user paging is not reset on reload
+        }, 30000);
+        $('#validate_form').validate({
+            ignore: '.ignore',
+            errorElement: 'div', //错误信息的容器
+            errorClass: 'is-danger',
+            errorPlacement: function (error, element) {
+                error.addClass('bk-form-tip').insertAfter(element)
+            },
+            success: function (label) {                 //验证通过的提示图标
+                label.html('<div class="bk-badge bk-success"><i class="bk-icon icon-check-1"></i></div>');
+            },
+            validClass: "bk-valid",
+            //验证规则
+            rules: {
+                org_name: {
+                    required: true,
+                },
+                principal: {
+                    required: true,
+                },
+                apply_person: {
+                    required: true,
+                },
+            },
+            //错误提示信息
+            messages: {
+                org_name: "<p class='bk-tip-text'>所属组织为必填项！</p>  ",
+                principal: "<p class='bk-tip-text'>负责人为必填项！</p>  ",
+                apply_person: "<p class='bk-tip-text'>可申报人员为必填项！</p>  ",
+            }
+        });
+
+        function saveOrg() {
+            if ($('#validate_form').valid()) {
+                $.ajax({
+                    url: '{{ SITE_URL }}save_org_info/',
+                    method: 'post',
+                    data: {
+                        'org_name': $("#org_name").val(),
+                        'principal': $('#principal').val(),
+                        'apply_person': $('#apply_person').val(),
+                        'org_id': $('#org_id').val(),
+                        'csrfmiddlewaretoken': "{{ csrf_token }}"
+                    },
+                    success: function (response) {
+                        if (response['result']) {
+                            new bkMessage({
+                                message: response['message'],
+                                theme: 'success'
+                            })
+                            $('#myModal').modal('hide')
+                            orgTable.ajax.reload(null, false)
+                        } else {
+                            // 失败处理
+                            new bkMessage({
+                                message: response['message'],
+                                theme: 'error',
+                                delay: 3000
+                            });
+                            $('#myModal').modal('hide')
+                            orgTable.ajax.reload(null, false)
+                        }
+                    }
+                })
+            }
+        }
+
+        function editOrgForm(id) {
+            $.ajax({
+                url: '{{ SITE_URL }}get_org_info/' + id,
+                method: 'get',
+                success: function (response) {
+                    if (response['result']) {
+                        $("#myModalLabel").text("修改组织信息");
+                        $('#myModal').modal('show');
+                        $("#org_name").val(response.data.info.data.org_name);
+                        $('#principal').val(response.data.info.data.principal);
+                        $('#apply_person').val(response.data.info.data.apply_person);
+                        $('#org_id').val(response.data.info.data.id);
+                        $('#principal').tagsinput('add', response.data.info.data.principal);
+                        $('#apply_person').tagsinput('add', response.data.info.data.apply_person);
+                    } else {
+                        // 失败处理
+                        new bkMessage({
+                            message: response['message'],
+                            theme: 'error',
+                            delay: 3000
+                        });
+                    }
+                }
+            })
+        }
+
+        $('#myModal').on('hide.bs.modal', function () {
+            document.getElementById("validate_form").reset();
+            $("#validate_form").validate().resetForm();
+            $('#principal').tagsinput('removeAll');
+            $('#apply_person').tagsinput('removeAll');
+            $('#org_id').val("");
+        });
+
+        function deleteOrgForm(id) {
+            var dialog = new bkDialog({
+                type: 'dialog',
+                title: '删除',
+                content: '确认删除该条数据？',
+                confirmFn: function () {
+                    $.ajax({
+                        url: '{{ SITE_URL }}delete_org_info/' + id,
+                        method: 'get',
+                        success: function (response) {
+                            if (response['result']) {
+                                new bkMessage({
+                                    message: response['message'],
+                                    theme: 'success'
+                                })
+                                orgTable.ajax.reload(null, false)
+                            } else {
+                                // 失败处理
+                                new bkMessage({
+                                    message: response['message'],
+                                    theme: 'error',
+                                    delay: 3000
+                                });
+                            }
+                        }
+                    })
+                }
+            });
+            dialog.show();
+        }
+    </script>
 {% endblock %}

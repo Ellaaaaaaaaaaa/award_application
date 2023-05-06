@@ -3,6 +3,7 @@
 {% block head %}
     <title>{% trans "蓝鲸开发框架" %}</title>
     {{ block.super }}
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/select2-3.5.2/select2.css" rel="stylesheet">
 {% endblock %}
 
 
@@ -13,6 +14,12 @@
             <li><a href="{{ SITE_URL }}award">奖项信息</a></li>
             <li><span href="{{ SITE_URL }}batch_copy">批量克隆</span></li>
         </ol>
+        <div>
+            <input type="hidden" class="bk-form-input" id="search_award_name" value="{{ award_name }}">
+            <input type="hidden" class="bk-form-input" id="search_org_name" value="{{ org_name }}">
+            <input type="hidden" class="bk-form-input" id="search_status" value="{{ status }}">
+            <input type="hidden" class="bk-form-input" id="search_apply_time" value="{{ apply_time }}">
+        </div>
         <div class="bk-panel bk-demo">
             <div class="bk-panel-header">
                 <div class="bk-form m15">
@@ -23,13 +30,15 @@
                                     <label class="bk-label">申报奖项：</label>
                                 </div>
                                 <div class="col-md-4 col-lg-4 col-xs-4">
-                                    <input type="text" class="bk-form-input" placeholder="请输入替换前奖项名称">
+                                    <input type="text" class="bk-form-input" id="old_award_name"
+                                           placeholder="请输入替换前奖项名称">
                                 </div>
                                 <div class="col-md-2 col-lg-2 col-xs-2">
                                     <span>替换为</span>
                                 </div>
                                 <div class="col-md-4 col-lg-4 col-xs-4">
-                                    <input type="text" class="bk-form-input" placeholder="请输入替换后奖项名称">
+                                    <input type="text" class="bk-form-input" id="new_award_name"
+                                           placeholder="请输入替换后奖项名称">
                                 </div>
                             </div>
                         </div>
@@ -40,18 +49,30 @@
                                 <div class="col-md-2 col-lg-2 col-xs-2">
                                     <label class="bk-label">所属组织：</label>
                                 </div>
-                                <div class="col-md-4 col-lg-4 col-xs-4">
-                                    <select name="" id="" class="bk-form-select">
-                                        <option value="">不限</option>
-                                        <option value="">组织1</option>
-                                        <option value="">组织2</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2 col-lg-2 col-xs-2">
-                                    <p>支持多选</p>
+                                <div class="col-md-10 col-lg-10 col-xs-10">
+                                    <div class="plugin3_demo" id="plugin3_demo3" style="display:inline-block;">
+                                        <!-- select2 通过ajax start -->
+                                        <div class="select2-container select2_box select2-container-active"
+                                             id="s2id_autogen5"
+                                             style="width:418px;height: 36px">
+                                            <a href="javascript:void(0)" class="select2-choice" tabindex="-1"><abbr
+                                                    class="select2-search-choice-close"></abbr> <span
+                                                    class="select2-arrow"
+                                                    role="presentation"><b
+                                                    role="presentation"></b></span></a>
+                                            <label for="belonging_org" class="select2-offscreen"></label>
+                                            <input class="select2-focusser select2-offscreen" type="text"
+                                                   aria-haspopup="true"
+                                                   role="button" aria-labelledby="select2-chosen-6">
+                                        </div>
+                                        <input type="hidden" class="select2_box bk-form-input"
+                                               style="width: 280px; display: none;"
+                                               tabindex="-1"
+                                               title="" value="" id="belonging_org">
+                                        <!-- select2 通过ajax end -->
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="row">
@@ -81,325 +102,53 @@
 
                 <div class="bk-form-item">
                     <div class="bk-form-content">
-                        <button class="bk-button bk-default" title="预览">预览</button>
-                        <button class="bk-button bk-primary" title="查询">查询</button>
+                        <button class="bk-button bk-default" title="预览" onclick="watch()">预览</button>
+                        <button class="bk-button bk-primary" title="查询" onclick="batchCopyData()">确认</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="bk-panel-body p0">
-            <table class="bk-table has-thead-bordered">
+            <table id="awardCopy" class="bk-table table-bordered">
                 <thead>
                 <tr>
                     <th>所属组织</th>
                     <th>奖项级别</th>
                     <th>申报奖项</th>
-                    <th>状态</th>
+                    <th>替换后的申报奖项</th>
                     <th>开始时间</th>
-                    <th>申报时间</th>
-                    <th>申报人数</th>
-                    <th>获奖人数</th>
-                    <th>操作</th>
+                    <th>结束时间</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>蓝鲸产品中心</td>
-                    <td>中心级</td>
-                    <td>季度之星</td>
-                    <td>开始</td>
-                    <td>2020-11-06 16：50：50</td>
-                    <td>2020-11-06 16：50：50</td>
-                    <td>10</td>
-                    <td>1</td>
-                    <td>
-                        <a class="bk-icon-button bk-success bk-button-mini" title="查看">
-                            <i class="bk-icon icon-check-1 bk-icon"></i>
-                            <i class="bk-text">查看</i>
-                        </a>
-                        <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                            <i class="bk-icon icon-file bk-icon"></i>
-                            <i class="bk-text">编辑</i>
-                        </a>
-                        <a class="bk-icon-button bk-warning bk-button-mini" title="克隆">
-                            <i class="bk-icon icon-edit bk-icon"></i>
-                            <i class="bk-text">克隆</i>
-                        </a>
-                        <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                            <i class="bk-icon icon-close bk-icon"></i>
-                            <i class="bk-text">删除</i>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>蓝鲸产品中心</td>
-                    <td>中心级</td>
-                    <td>季度之星</td>
-                    <td>开始</td>
-                    <td>2020-11-06 16：50：50</td>
-                    <td>2020-11-06 16：50：50</td>
-                    <td>10</td>
-                    <td>1</td>
-                    <td>
-                        <a class="bk-icon-button bk-success bk-button-mini" title="查看">
-                            <i class="bk-icon icon-check-1 bk-icon"></i>
-                            <i class="bk-text">查看</i>
-                        </a>
-                        <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                            <i class="bk-icon icon-file bk-icon"></i>
-                            <i class="bk-text">编辑</i>
-                        </a>
-                        <a class="bk-icon-button bk-warning bk-button-mini" title="克隆">
-                            <i class="bk-icon icon-edit bk-icon"></i>
-                            <i class="bk-text">克隆</i>
-                        </a>
-                        <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                            <i class="bk-icon icon-close bk-icon"></i>
-                            <i class="bk-text">删除</i>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>蓝鲸产品中心</td>
-                    <td>中心级</td>
-                    <td>季度之星</td>
-                    <td>开始</td>
-                    <td>2020-11-06 16：50：50</td>
-                    <td>2020-11-06 16：50：50</td>
-                    <td>10</td>
-                    <td>1</td>
-                    <td>
-                        <a class="bk-icon-button bk-success bk-button-mini" title="查看">
-                            <i class="bk-icon icon-check-1 bk-icon"></i>
-                            <i class="bk-text">查看</i>
-                        </a>
-                        <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                            <i class="bk-icon icon-file bk-icon"></i>
-                            <i class="bk-text">编辑</i>
-                        </a>
-                        <a class="bk-icon-button bk-warning bk-button-mini" title="克隆">
-                            <i class="bk-icon icon-edit bk-icon"></i>
-                            <i class="bk-text">克隆</i>
-                        </a>
-                        <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                            <i class="bk-icon icon-close bk-icon"></i>
-                            <i class="bk-text">删除</i>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>蓝鲸产品中心</td>
-                    <td>中心级</td>
-                    <td>季度之星</td>
-                    <td>开始</td>
-                    <td>2020-11-06 16：50：50</td>
-                    <td>2020-11-06 16：50：50</td>
-                    <td>10</td>
-                    <td>1</td>
-                    <td>
-                        <a class="bk-icon-button bk-success bk-button-mini" title="查看">
-                            <i class="bk-icon icon-check-1 bk-icon"></i>
-                            <i class="bk-text">查看</i>
-                        </a>
-                        <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                            <i class="bk-icon icon-file bk-icon"></i>
-                            <i class="bk-text">编辑</i>
-                        </a>
-                        <a class="bk-icon-button bk-warning bk-button-mini" title="克隆">
-                            <i class="bk-icon icon-edit bk-icon"></i>
-                            <i class="bk-text">克隆</i>
-                        </a>
-                        <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                            <i class="bk-icon icon-close bk-icon"></i>
-                            <i class="bk-text">删除</i>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>蓝鲸产品中心</td>
-                    <td>中心级</td>
-                    <td>季度之星</td>
-                    <td>开始</td>
-                    <td>2020-11-06 16：50：50</td>
-                    <td>2020-11-06 16：50：50</td>
-                    <td>10</td>
-                    <td>1</td>
-                    <td>
-                        <a class="bk-icon-button bk-success bk-button-mini" title="查看">
-                            <i class="bk-icon icon-check-1 bk-icon"></i>
-                            <i class="bk-text">查看</i>
-                        </a>
-                        <a class="bk-icon-button bk-warning bk-button-mini" title="编辑">
-                            <i class="bk-icon icon-file bk-icon"></i>
-                            <i class="bk-text">编辑</i>
-                        </a>
-                        <a class="bk-icon-button bk-warning bk-button-mini" title="克隆">
-                            <i class="bk-icon icon-edit bk-icon"></i>
-                            <i class="bk-text">克隆</i>
-                        </a>
-                        <a class="bk-icon-button bk-danger bk-button-mini" title="关闭">
-                            <i class="bk-icon icon-close bk-icon"></i>
-                            <i class="bk-text">删除</i>
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
             </table>
         </div>
-        <div class="bk-panel-footer p10">
-            <div class="bk-page bk-compact-page fr">
-                <ul>
-                    <li class="page-item">
-                        <a href="javascript:void(0);" class="page-button">
-                            <i class="bk-icon icon-angle-left"></i>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a href="javascript:void(0);" class="page-button">1</a>
-                    </li>
-                    <li class="page-item cur-page">
-                        <a href="javascript:void(0);" class="page-button">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="javascript:void(0);" class="page-button">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="javascript:void(0);" class="page-button">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="javascript:void(0);" class="page-button">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="javascript:void(0);" class="page-button">6</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="javascript:void(0);" class="page-button">
-                            <i class="bk-icon icon-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
-    </div>
-    <!-- 新增and编辑( Modal )  -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-         data-backdrop="static">
-        <div class="modal-dialog" style="width: 1000px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">奖项管理</h4>
-                </div>
-                <div class="bk-form" style="width:600px;padding: 10px" id="validate_form">
-                    <div class="bk-form-item">
-                        <label class="bk-label" style="width:150px;">奖项名称</label>
-                        <div class="bk-form-content" style="margin-left:150px;">
-                            <input type="text" class="bk-form-input" placeholder="请输入奖项名称">
-                        </div>
-                    </div>
-                    <div class="bk-form-item">
-                        <label class="bk-label" style="width:150px;">评奖条件</label>
-                        <div class="bk-form-content" style="margin-left:150px;">
-                            <div id="editor4_demo1">
-                                <div id="myEditor" style="width:600px;height:240px;">
-                                    <p>请输入评奖条件...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bk-form-item">
-                        <label class="bk-label" style="width:150px;">奖项级别</label>
-                        <div class="bk-form-content" style="margin-left:150px;">
-                            <select name="" id="" class="bk-form-select">
-                                <option value="">级别1</option>
-                                <option value="">级别2</option>
-                                <option value="">级别3</option>
-                                <option value="">级别4</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="bk-form-item">
-                        <label class="bk-label" style="width:150px;">所属组织</label>
-                        <div class="bk-form-content" style="margin-left:150px;">
-                            <input type="text" class="bk-form-input" placeholder="请输入所属组织">
-                        </div>
-                    </div>
-                    <div class="bk-form-item">
-                        <label class="bk-label" style="width:150px;">开始日期</label>
-                        <div class="bk-form-content" style="margin-left:150px;">
-                            <input type="text" class="bk-form-input daterangepicker_demo" id="start_datetime"
-                                   placeholder="选择日期...">
-                        </div>
-                    </div>
-                    <div class="bk-form-item">
-                        <label class="bk-label" style="width:150px;">结束日期</label>
-                        <div class="bk-form-content" style="margin-left:150px;">
-                            <input type="text" class="bk-form-input daterangepicker_demo" id="end_datetime"
-                                   placeholder="选择日期...">
-                        </div>
-                    </div>
-                    <div class="bk-form-item">
-                        <label class="bk-label" style="width:150px;">状态</label>
-                        <div class="bk-form-content" style="margin-left:150px;">
-                            <label class="bk-form-radio">
-                                <input type="radio" name="radio1" checked="checked">
-                                <i class="bk-radio-text">生效</i>
-                            </label>
-                            <label class="bk-form-radio">
-                                <input type="radio" name="radio1">
-                                <i class="bk-radio-text">过期</i>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="bk-button bk-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="bk-button bk-primary">提交</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div>
+{% endblock %}
 
+{% block extra_block %}
     <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+    <!-- 平台 js  -->
+    <script src="{{ REMOTE_STATIC_URL }}v3/bk/js/bk.js"></script>
+    <!-- datatables js -->
+    <script src="{{ STATIC_URL }}datatables-1.10.7/jquery.dataTables.js"></script>
+    <script src="{{ STATIC_URL }}datatables-1.10.7/dataTables.bootstrap.js"></script>
     <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/moment.min.js"></script>
     <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/daterangepicker-2.0.5/daterangepicker.js"></script>
-    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/umeditor-1.2.2/umeditor.config.js"></script>
-    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/umeditor-1.2.2/umeditor.min.js"></script>
-    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/umeditor-1.2.2/lang/zh-cn/zh-cn.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/select2-3.5.2/select2.js"></script>
+
     <script type="text/javascript">
-        //editor4_demo1_js_start
-        var editor = UM.getEditor('myEditor');
-
-        // 获取内容
-        function getContent() {
-            alert("编辑器当前内容为：\r\n" + editor.getContent());
-        }
-
-        // 设置内容
-        function setContent() {
-            return editor.setContent('欢迎使用蓝鲸！');
-        }
-
-        // 追加内容
-        function appendContent() {
-            return editor.setContent('欢迎使用蓝鲸！', true);
-        }
-
-        // 获得焦点
-        function setFocus() {
-            return editor.focus();
-        }
 
         //editor4_demo1_js_end
-
         $('#start_datetime').daterangepicker({
             locale: {
                 format: 'YYYY-MM-DD'
             },
             autoApply: false, //选择日期后自动设置值
-            singleDatePicker: true //单选选择一个日期
+            singleDatePicker: true, //单选选择一个日期
+            autoUpdateInput: true
         });
+        $('#start_datetime').val("")
+
         $('#end_datetime').daterangepicker({
             locale: {
                 format: 'YYYY-MM-DD'
@@ -407,7 +156,189 @@
             autoApply: false, //选择日期后自动设置值
             singleDatePicker: true //单选选择一个日期
         });
+        $('#end_datetime').val("")
 
+        $("#plugin3_demo3 .select2_box").select2({
+            ajax: {
+                url: "{{ SITE_URL }}get_org_select_data",
+                cache: false,
+                //对返回的数据进行处理
+                results: function (data) {
+                    {#data.data.results.push({#}
+                    {#    'id': -1,#}
+                    {#    'text': "不限",#}
+                    {# });#}
+                    return data.data;
+                }
+            }
 
+        });
+        //表格(DataTables)
+        var language = {
+            search: "{% trans '搜索：' %}",
+            lengthMenu: "{% trans '每页显示 _MENU_ 记录' %}",
+            zeroRecords: "{% trans '没找到相应的数据！' %}",
+            info: "{% trans '分页 _PAGE_ / _PAGES_ 共 _TOTAL_ 条' %}",
+            infoEmpty: "{% trans '暂无数据！' %}",
+            infoFiltered: "{% trans '(从 _MAX_ 条数据中搜索)' %}",
+            paginate: {
+                first: "{% trans '首页' %}",
+                last: "{% trans '尾页' %}",
+                previous: "{% trans '上一页' %}",
+                next: "{% trans '下一页' %}",
+            }
+        }
+        var awardCopyTable = $('#awardCopy').DataTable({
+            sProcessing: '<img alt="loadding" src="https://magicbox.bk.tencent.com/static_api/v3/components/loading1/images/loading_2_36x36.gif">',//这里很重要，如果你的加载中是文字，则直接写上文字即可，如果是gif的图片，使用img标签就可以加载
+            pagingType: "full_numbers",
+            paging: true, //隐藏分页
+            ordering: false, //关闭排序
+            info: true, //隐藏左下角分页信息
+            searching: false, //关闭搜索
+            pageLength: 10, //每页显示几条数据
+            lengthChange: false, //不允许用户改变表格每页显示的记录数
+            language: language, //汉化
+            serverSide: true,
+            lengthMenu: [5, 10, 25, 50, 75, 100],
+            ajax: {
+                url: '{{SITE_URL}}get_award_copy_list/',
+                method: "post",
+                dataType: 'json',
+                data: function (d) {
+                    d.search_award_name = $('#search_award_name').val();
+                    d.search_org_name = $('#search_org_name').val();
+                    d.search_status = $('#search_status').val();
+                    d.search_apply_time = $('#search_apply_time').val();
+
+                    d.belonging_org = $('#s2id_autogen5').val();
+                    d.new_award_name = $('#new_award_name').val();
+                    d.old_award_name = $('#old_award_name').val();
+                    d.start_time = $('#start_datetime').val() ? $('#start_datetime').val() + " 00:00:00" : "";
+                    d.end_time = $('#end_datetime').val() ? $('#end_datetime').val() + " 23:59:59" : "";
+                    d.csrfmiddlewaretoken = "{{ csrf_token }}";
+                },
+                dataSrc: function (json) {
+                    json.draw = json.data.info.draw;
+                    json.recordsTotal = json.data.info.recordsTotal;
+                    json.recordsFiltered = json.data.info.recordsFiltered;
+                    json.data = json.data.info.data
+
+                    return json.data;
+                },
+            },
+            columnDefs: [
+                {
+                    targets: 0,
+                    data: "belonging_org",
+                },
+                {
+                    targets: 1,
+                    data: "award_level",
+                },
+                {
+                    targets: 2,
+                    data: "old_award_name",
+                },
+                {
+                    targets: 3,
+                    data: "new_award_name",
+                },
+                {
+                    targets: 4,
+                    data: "start_time",
+                },
+                {
+                    targets: 5,
+                    data: "end_time",
+                }
+            ]
+        });
+
+        function watch() {
+            let start_datetime = $('#start_datetime').val() + " 00:00:00"
+            let end_datetime = $('#end_datetime').val() + " 23:59:59"
+            if (!$('#old_award_name').val()) {
+                new bkMessage({
+                    message: "请输入需要替换的奖项",
+                    theme: 'error',
+                    delay: 3000
+                });
+                return false
+            }
+            if (!$('#new_award_name').val()) {
+                new bkMessage({
+                    message: "请输入替换后的奖项",
+                    theme: 'error',
+                    delay: 3000
+                });
+                return false
+            }
+            if (!$('#s2id_autogen5').val()) {
+                new bkMessage({
+                    message: "请选择所属组织",
+                    theme: 'error',
+                    delay: 3000
+                });
+                return false
+            }
+            if (start_datetime >= end_datetime) {
+                new bkMessage({
+                    message: "结束日期不能小于起始日期",
+                    theme: 'error',
+                    delay: 3000
+                });
+                return false
+            }
+            awardCopyTable.ajax.reload(null, false);
+        }
+
+        function batchCopyData() {
+            var rows = awardCopyTable.rows().data();
+
+            let myArray = [];
+            for (var i = 0; i < rows.length; i++) {
+                myArray.push(rows[i]);
+            }
+
+            var dialog = new bkDialog({
+                type: 'dialog',
+                title: '批量克隆',
+                content: '确认克隆数据？',
+                confirmFn: function () {
+                    $.ajax({
+                        url: '{{ SITE_URL }}batch_copy_award_data/',
+                        method: 'post',
+                        dataType: "json",
+                        data: {
+                            "data": JSON.stringify(myArray),
+                            'csrfmiddlewaretoken': "{{ csrf_token }}"
+                        },
+
+                        success: function (response) {
+                            if (response['result']) {
+                                new bkMessage({
+                                    message: response['message'],
+                                    theme: 'success'
+                                })
+                                $("#plugin3_demo3 .select2_box").select2("val", "")
+                                $('#new_award_name').val("");
+                                $('#old_award_name').val("");
+                                $('#start_datetime').val("");
+                                $('#end_datetime').val("");
+                                window.location.href = "{{ SITE_URL }}award"
+                            } else {
+                                // 失败处理
+                                new bkMessage({
+                                    message: response['message'],
+                                    theme: 'error',
+                                    delay: 3000
+                                });
+                            }
+                        }
+                    })
+                }
+            });
+            dialog.show();
+        }
     </script>
 {% endblock %}
